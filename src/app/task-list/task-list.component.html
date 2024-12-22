@@ -1,13 +1,13 @@
 <h2>Task list</h2>
-<input  [(ngModel)]="" type="text">
 <table>
 	<tbody>
-	<tr *ngFor="let task of tasks; let i = index;" [ngClass]="task.state ? 'green' : 'red'">
+	<tr *ngFor="let task of taskService.tasks; let i = index;" [ngClass]="task.state ? 'green' : 'red'">
 		<td>{{task.name}}</td>	
-		<td><button (click)="changeState(i)">{{task.state}}</button></td>
-		<td><button (click)="deleteTask(i)">Delete</button></td>
+		<td><button (click)="taskService.changeState(i)">{{task.state}}</button></td>
+		<td><button (click)="taskService.deleteTask(i)">Delete</button></td>
+		<td><button><a [routerLink]="['/tasks', i]">detail</a></button></td>
 	</tr>
 	</tbody>
 </table>
-<input  [(ngModel)]="newTask" type="text">
-<button (click)="addTask()">Add</button>
+<input  [(ngModel)]="taskService.newTask" type="text">
+<button (click)="taskService.addTask()">Add</button>

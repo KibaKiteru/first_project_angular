@@ -72,6 +72,20 @@
     position: relative;
   }
 
+  nav{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	background-color: black;
+	padding: 1rem;
+	gap: 1rem;
+  }
+
+  nav a {
+	color : purple;
+  }
+
+
   .angular-logo {
     max-width: 9.2rem;
   }
@@ -176,7 +190,9 @@
     }
   }
 </style>
+<nav>
+	<a routerLink ="/">Accueil</a>
+	<a routerLink="/tasks">task</a>
+</nav>
 
-<app-task-list></app-task-list>
-
-<router-outlet />
+<router-outlet></router-outlet>

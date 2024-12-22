@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
-import { NgClass } from '@angular/common';
-
+import { NgFor, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/Forms';
-import { Task } from '../task';
+import { TaskService } from '../task.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
-  imports: [NgFor, FormsModule, NgClass],
+  imports: [NgFor, FormsModule, NgClass, RouterModule],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
 })
@@ -15,28 +14,5 @@ import { Task } from '../task';
 
 
 export class TaskListComponent {
-	"tasks" : Task[] = [{name : "truc", state: true}, 
-		{name : "bidul", state: true}, 
-		{name : "machin", state: true}, 
-		{name : "choiète", state: true}];
-
-	"newTask" : string;
-
-	addTask(): void {
-
-		if(this.newTask.trim() !== ""){
-
-			this.tasks.push({name: this.newTask, state: true});
-			this.newTask = "";
-		}
-	} 
-
-	deleteTask(index : number):void{
-		this.tasks.splice(index, 1);
-	}
-
-	changeState(index : number): void{
-		this.tasks[index].state = !this.tasks[index].state;
-	}
-
+	constructor (public taskService: TaskService) {}
 }
